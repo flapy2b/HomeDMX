@@ -1,18 +1,28 @@
-//
-//  FuturisticHeader.swift
-//  HomeDMX
-//
-//  Created by GUENIOT FLORIAN on 12/12/2025.
-//
-
 import SwiftUI
 
-struct FuturisticHeader: View {
+struct Header: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+            VStack(alignment: .leading) {
+                Text("HomeDMX")
+                    .font(.title.bold())
+                    .foregroundColor(.primary)
+
+                HStack {
+                    ForEach(0..<5) { index in
+                        Circle()
+                            .frame(width: 22, height: 15)
+                            .foregroundColor([
+                                .red, .green, .blue, .yellow, .purple
+                            ][index])
+                    }
+                }
+                .padding(.top, 4)
+            }
+            .padding(.top, 20)
+            .padding(.horizontal)
+        }
 }
 
-#Preview {
-    FuturisticHeader()
+#Preview{
+    Header()
 }

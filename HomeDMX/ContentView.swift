@@ -29,14 +29,16 @@ struct ContentView: View {
     @State private var selectedColor: Color = .red
 
     var body: some View {
+        Header()
         ZStack(alignment: .bottom) {
-
+            
             Group {
                 switch selected{
                 case 0: CouleursView()
                 case 1: AnimationsView()
                 default: ColorWheelView(hue: $hue, saturation: $saturation, selectedColor: $selectedColor)
                 }
+                
                 /*
                 if selected == 0 { CouleursView() }
                 else { AnimationsView() }

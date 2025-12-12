@@ -16,10 +16,6 @@ struct CouleursView: View {
     var body: some View {
         VStack {
             // Titre
-            Text("Couleurs DMX")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.top, 50)
 
             Spacer()
 
