@@ -9,7 +9,10 @@ import SwiftUI
 
 struct AnimationsView: View {
     var body: some View {
-        Text("Animations")
+        Text("Animations DMX")
+            .font(.largeTitle)
+            .fontWeight(.bold)
+            .padding(.top, 50)
     }
 }
 

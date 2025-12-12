@@ -24,7 +24,7 @@ struct CouleursView: View {
             Spacer()
 
             // Grille de 2 colonnes et 4 lignes
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
                 ForEach(0..<couleursDMX.count, id: \.self) { index in
                     Button(action: {
                         // Action au clic : envoyer la couleur au DMX
@@ -34,7 +34,7 @@ struct CouleursView: View {
                             // Carré coloré
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(couleursDMX[index].couleur)
-                                .frame(width: 120, height: 120)
+                                .frame(width: 100, height: 100)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.gray, lineWidth: 2)
