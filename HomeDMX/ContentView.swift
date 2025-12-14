@@ -26,7 +26,7 @@ struct ContentView: View {
     @State private var selected = 0
     @State private var hue: Double = 0.5
     @State private var saturation: Double = 0.8
-    @State private var selectedColor: Color = .red
+    @State private var selectedColor: Color = .white
 
     var body: some View {
         Header()

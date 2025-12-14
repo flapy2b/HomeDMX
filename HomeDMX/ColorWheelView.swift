@@ -1,5 +1,23 @@
 import SwiftUI
 
+extension UIColor {
+   convenience init(red: Int, green: Int, blue: Int) {
+       assert(red >= 0 && red <= 255, "Invalid red component")
+       assert(green >= 0 && green <= 255, "Invalid green component")
+       assert(blue >= 0 && blue <= 255, "Invalid blue component")
+
+       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+   }
+
+   convenience init(rgb: Int) {
+       self.init(
+           red: (rgb >> 16) & 0xFF,
+           green: (rgb >> 8) & 0xFF,
+           blue: rgb & 0xFF
+       )
+   }
+}
+
 struct ColorWheelView: View {
     @Binding var hue: Double
     @Binding var saturation: Double
@@ -21,7 +39,13 @@ struct ColorWheelView: View {
                     // Gradient de couleur
                     AngularGradient(
                         gradient: Gradient(colors: [
-                            .red, .yellow, .green, .mint, .blue, .purple, .red
+                            Color(red: 1, green: 0, blue: 0),
+                            Color(red: 1, green: 1, blue: 0),
+                            Color(red: 0, green: 1, blue: 0),
+                            Color(red: 0, green: 1, blue: 1),
+                            Color(red: 0, green: 0, blue: 1),
+                            Color(red: 1, green: 0, blue: 1),
+                            Color(red: 1, green: 0, blue: 0),
                         ]),
                         center: .center
                     )
@@ -29,7 +53,7 @@ struct ColorWheelView: View {
 
                     // Dégradé de saturation
                     RadialGradient(
-                        gradient: Gradient(colors: [.white.opacity(0.9), .clear]),
+                        gradient: Gradient(colors: [.white.opacity(1), .clear]),
                         center: .center,
                         startRadius: 0,
                         endRadius: radius
@@ -38,7 +62,7 @@ struct ColorWheelView: View {
 
                     // Curseur
                     Circle()
-                        .fill(Color.white)
+                        .fill( Color.white)
                         .frame(width: 24, height: 24)
                         .shadow(color: .black.opacity(0.2), radius: isDragging ? 8 : 4)
                         .overlay(

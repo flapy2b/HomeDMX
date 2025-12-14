@@ -2,6 +2,8 @@ import SwiftUI
 
 struct LiquidGlassTabBar: View {
     @Binding var selected: Int
+    
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         HStack {
@@ -29,11 +31,11 @@ struct LiquidGlassTabBar: View {
         return VStack(spacing: 4) {
             Image(systemName: icon)
                 .font(.system(size: 20, weight: .semibold))
-                .foregroundStyle(isSelected ? .blue : .gray.opacity(0.5))
+                .foregroundStyle(isSelected ? .blue : colorScheme == .dark ? .white : .black)
 
             Text(title)
                 .font(.footnote)
-                .foregroundStyle(isSelected ? .blue : .gray.opacity(0.6))
+                .foregroundStyle(isSelected ? .blue : colorScheme == .dark ? .white : .black)
         }
         .frame(maxWidth: .infinity)
         .contentShape(Rectangle())
@@ -64,3 +66,5 @@ struct LiquidGlassBackground: View {
         .compositingGroup()
     }
 }
+
+
